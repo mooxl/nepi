@@ -1,0 +1,8 @@
+version: "3.4"
+
+services:
+  boilerplate:
+    container_name: boilerplate
+    restart: unless-stopped
+    build:
+      context: ./
