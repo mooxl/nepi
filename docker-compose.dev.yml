@@ -5,9 +5,9 @@ services:
     build:
       target: base
     volumes:
-      - ./src:/base/src
-      - ./public:/base/public
-      - ./tailwind.config.js:/base/tailwind.config.js
+      - ./frontend/src:/base/src
+      - ./frontend/public:/base/public
+      - ./frontend/tailwind.config.js:/base/tailwind.config.js
     command: yarn dev
     ports:
       - "3000:3000"
