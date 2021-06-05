@@ -5,7 +5,7 @@ services:
     container_name: boilerplate_frontend
     restart: unless-stopped
     build:
-      context: ./
+      context: ./frontend/
   strapi:
     container_name: boilerplate_strapi
     restart: unless-stopped
