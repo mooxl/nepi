@@ -1,7 +1,7 @@
 version: "3.4"
 
 services:
-  boilerplate:
+  frontend:
     build:
       target: base
     volumes:
@@ -11,3 +11,6 @@ services:
     command: yarn dev
     ports:
       - "3000:3000"
+  strapi:
+    ports:
+      - "1337:1337"

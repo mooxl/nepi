@@ -1,17 +1,28 @@
 version: "3.4"
 
 services:
-  boilerplate:
+  frontend:
     command: yarn prod
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.boilerplate.rule=Host(`www.boilerplate.com`)"
-      - "traefik.http.routers.boilerplate.entrypoints=https"
-      - "traefik.http.routers.boilerplate.tls.certresolver=httpresolver"
+      - "traefik.http.routers.boilerplate_frontend.rule=Host(`www.boilerplate.com`)"
+      - "traefik.http.routers.boilerplate_frontend.entrypoints=https"
+      - "traefik.http.routers.boilerplate_frontend.tls.certresolver=httpresolver"
       - "traefik.docker.network=traefik_network"
     networks:
       - traefik_network
-
+  strapi:
+    environment:
+      - NODE_ENV=production
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.boilerplate_strapi.rule=Host(`strapi.boilerplate.com`)"
+      - "traefik.http.routers.boilerplate_strapi.entrypoints=https"
+      - "traefik.http.routers.boilerplate_strapi.tls.certresolver=httpresolver"
+      - "traefik.docker.network=traefik_network"
+    networks:
+      - traefik_network
+      - default
 networks:
   traefik_network:
     external: true

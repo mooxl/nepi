@@ -1,8 +1,34 @@
 version: "3.4"
 
 services:
-  boilerplate:
-    container_name: boilerplate
+  frontend:
+    container_name: boilerplate_frontend
     restart: unless-stopped
     build:
       context: ./
+  strapi:
+    container_name: boilerplate_strapi
+    restart: unless-stopped
+    image: strapi/strapi
+    environment:
+      DATABASE_CLIENT: mongo
+      DATABASE_NAME: strapi
+      DATABASE_HOST: database
+      DATABASE_PORT: 27017
+      DATABASE_USERNAME: admin
+      DATABASE_PASSWORD: fai83hdib3234j
+    volumes:
+      - ./strapi:/srv/app
+    depends_on:
+      - database
+
+  database:
+    container_name: boilerplate_database
+    restart: unless-stopped
+    image: mongo
+    environment:
+      MONGO_INITDB_DATABASE: strapi
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: fai83hdib3234j
+    volumes:
+      - ./database:/data/db
