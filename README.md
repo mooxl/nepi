@@ -1,12 +1,12 @@
 # nepi
-Boilerplate for Next.js + Strapi
+A Boilerplate for Next.js + Strapi
 
-## Starting development environment
+## Starting the development environment
 ```
 docker-compose -f docker-compose.yml -f docker-compose.dev.yml up 
 ```
 
-## Starting production environment
+## Starting the production environment
 ```
 docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
 ```
