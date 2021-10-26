@@ -10,7 +10,7 @@ services:
   strapi:
     container_name: boilerplate_strapi
     restart: unless-stopped
-    image: strapi/strapi
+    image: strapi/strapi:latest
     environment:
       DATABASE_CLIENT: mongo
       DATABASE_NAME: strapi
