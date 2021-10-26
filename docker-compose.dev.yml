@@ -12,5 +12,12 @@ services:
     ports:
       - "3000:3000"
   strapi:
-    ports:
-      - "1337:1337"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.boilerplate_strapi.rule=Host(`strapi.mediaatrium.de`)"
+      - "traefik.http.routers.boilerplate_strapi.entrypoints=https"
+      - "traefik.http.routers.boilerplate_strapi.tls.certresolver=httpresolver"
+      - "traefik.docker.network=traefik_network"
+    networks:
+      - traefik_network
+      - default
